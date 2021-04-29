@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h4 My Photos
+  .row
+    each photo in photos
+      .card-deck.col-md-4
+          .card.bg-light
+              img.card-img-top(src=photo.imageurl, style="max-height:250px;max-width:250px")
+              .card-body
+                  strong.card-title 
+                     p #{photo.title}
+                  p.card-text    
+                     p 
+                        span Description: #{photo.description} <br /><br />
+                        span Size: #{photo.size} <br />
+                        span Filename: #{photo.originalname} <br />
+                        span=' Uploaded: ' +moment(photo.createdAt).format('YYYY-MM-DD') 
+                        <br />                    
+                        a(href='/photos/'+photo._id) Photo Details</br />
+  include newphoto
+ 
